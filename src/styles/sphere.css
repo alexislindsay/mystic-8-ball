@@ -1,0 +1,249 @@
+/* Mystic 8-Ball — Realistic 3D Sphere, Liquid Portal & Keyframe Animations */
+
+:root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body {
+    background-color: #03050c;
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+    overflow-x: hidden;
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+    touch-action: manipulation;
+}
+
+/* Realistic 3D Black Billiard Sphere */
+.eight-ball-sphere {
+    position: relative;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 32% 26%,
+        #475569 0%,
+        #1e293b 14%,
+        #090d16 42%,
+        #020408 78%,
+        #0f172a 96%,
+        #1e293b 100%
+    );
+    box-shadow:
+        0 35px 70px -15px rgba(0, 0, 0, 0.95),
+        0 0 50px -10px rgba(37, 99, 235, 0.2),
+        inset -18px -24px 45px rgba(0, 0, 0, 0.95),
+        inset 10px 14px 32px rgba(255, 255, 255, 0.14),
+        inset 0 -8px 25px rgba(59, 130, 246, 0.18);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.eight-ball-sphere:hover {
+    box-shadow:
+        0 40px 80px -12px rgba(0, 0, 0, 0.98),
+        0 0 65px -5px rgba(59, 130, 246, 0.32),
+        inset -18px -24px 45px rgba(0, 0, 0, 0.95),
+        inset 12px 16px 36px rgba(255, 255, 255, 0.18),
+        inset 0 -10px 30px rgba(59, 130, 246, 0.25);
+}
+
+/* Specular gloss reflection on top left of ball */
+.sphere-gloss {
+    position: absolute;
+    top: 9%;
+    left: 17%;
+    width: 34%;
+    height: 20%;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 255, 255, 0.12) 55%,
+        rgba(255, 255, 255, 0) 80%
+    );
+    transform: rotate(-28deg);
+    pointer-events: none;
+    filter: blur(1px);
+    z-index: 20;
+}
+
+.sphere-gloss-secondary {
+    position: absolute;
+    bottom: 8%;
+    right: 14%;
+    width: 45%;
+    height: 12%;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(59, 130, 246, 0.22) 0%,
+        rgba(59, 130, 246, 0) 75%
+    );
+    transform: rotate(-25deg);
+    pointer-events: none;
+    filter: blur(6px);
+    z-index: 20;
+}
+
+/* Recessed Bezel Rim */
+.window-bezel {
+    border-radius: 50%;
+    background: linear-gradient(145deg, #05070e, #182032);
+    box-shadow:
+        inset 0 6px 14px rgba(0, 0, 0, 0.95),
+        inset 0 -3px 8px rgba(255, 255, 255, 0.09),
+        0 2px 6px rgba(255, 255, 255, 0.06);
+}
+
+/* Deep Dark-Blue Liquid Portal */
+.liquid-window {
+    position: relative;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        #0a193d 0%,
+        #040b21 55%,
+        #01030a 92%,
+        #000000 100%
+    );
+    box-shadow:
+        inset 0 0 35px #000000,
+        inset 0 12px 28px rgba(0, 0, 0, 0.95);
+    overflow: hidden;
+}
+
+/* Glass Lens Reflection Over Liquid */
+.window-glass-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.03) 35%,
+        transparent 50%,
+        rgba(37, 99, 235, 0.06) 85%,
+        rgba(59, 130, 246, 0.14) 100%
+    );
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* Swirl / Murky Liquid Caustics */
+.liquid-swirl {
+    position: absolute;
+    inset: -40%;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(29, 78, 216, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(67, 56, 202, 0.2) 0%, transparent 50%),
+        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(37, 99, 235, 0.12) 90deg, transparent 180deg, rgba(59, 130, 246, 0.12) 270deg, transparent 360deg);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: slowSpin 24s linear infinite;
+    z-index: 2;
+}
+
+.liquid-swirl.agitated {
+    animation: fastSwirl 0.8s linear infinite;
+    opacity: 1;
+}
+
+@keyframes slowSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.08); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes fastSwirl {
+    0% { transform: rotate(0deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1.2); }
+}
+
+/* Floating Die Container */
+.die-wrapper {
+    transition:
+        transform 1.15s cubic-bezier(0.19, 1, 0.22, 1),
+        filter 1.15s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.9s ease-out;
+    will-change: transform, filter, opacity;
+    z-index: 8;
+}
+
+.die-submerged {
+    transform: scale(0.28) rotate(145deg) translateY(35px);
+    filter: blur(10px) brightness(0.2);
+    opacity: 0;
+}
+.die-surfaced {
+    transform: scale(1) rotate(0deg) translateY(0px);
+    filter: blur(0px) brightness(1);
+    opacity: 1;
+    animation: gentleBob 5.5s ease-in-out infinite;
+}
+
+@keyframes gentleBob {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    33% { transform: translateY(-4px) rotate(1.4deg) scale(1.01); }
+    66% { transform: translateY(3px) rotate(-1.2deg) scale(0.99); }
+}
+
+@keyframes shakeBall {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    8% { transform: translate3d(-22px, -16px, 0) rotate(-7deg); }
+    16% { transform: translate3d(20px, 14px, 0) rotate(6deg); }
+    24% { transform: translate3d(-26px, 12px, 0) rotate(-8deg); }
+    32% { transform: translate3d(24px, -18px, 0) rotate(7deg); }
+    40% { transform: translate3d(-18px, 20px, 0) rotate(-5deg); }
+    48% { transform: translate3d(22px, -12px, 0) rotate(6deg); }
+    56% { transform: translate3d(-20px, -14px, 0) rotate(-6deg); }
+    64% { transform: translate3d(16px, 16px, 0) rotate(4deg); }
+    72% { transform: translate3d(-14px, 8px, 0) rotate(-3deg); }
+    80% { transform: translate3d(10px, -8px, 0) rotate(2deg); }
+    90% { transform: translate3d(-5px, 4px, 0) rotate(-1deg); }
+}
+
+.shaking { animation: shakeBall 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+/* Bubble Particles in Liquid */
+.liquid-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(147, 197, 253, 0.65), rgba(37, 99, 235, 0.1));
+    box-shadow: 0 0 6px rgba(96, 165, 250, 0.4);
+    pointer-events: none;
+    z-index: 12;
+    animation: bubbleRise 1.4s ease-out forwards;
+}
+
+@keyframes bubbleRise {
+    0% { transform: translateY(30px) scale(0.3); opacity: 0; }
+    30% { opacity: 0.85; }
+    100% { transform: translateY(-90px) translateX(var(--drift, 12px)) scale(1.1); opacity: 0; }
+}
+
+/* Engraved / Glowing Text on Blue Icosahedron Die */
+.oracle-die-text {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #dbeafe;
+    text-shadow:
+        0 0 8px rgba(96, 165, 250, 0.9),
+        0 0 16px rgba(59, 130, 246, 0.65),
+        0 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+/* Custom Scrollbar for History Log */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); border-radius: 9999px; }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.35); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.6); }
+
+/* Respect Reduced Motion Accessibility Preference */
+@media (prefers-reduced-motion: reduce) {
+    .liquid-swirl, .die-surfaced { animation: none; }
+    .shaking { animation-duration: 0.25s; }
+}

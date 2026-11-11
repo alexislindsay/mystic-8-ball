@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#03050c"/>
+    </radialGradient>
+    <radialGradient id="sphere" cx="32%" cy="26%" r="70%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="16%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#090d16"/>
+      <stop offset="85%" stop-color="#020408"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </radialGradient>
+    <radialGradient id="portal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0a193d"/>
+      <stop offset="70%" stop-color="#040b21"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="die" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="55%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="208" fill="url(#sphere)" stroke="#1e293b" stroke-width="4"/>
+  <ellipse cx="188" cy="136" rx="64" ry="34" transform="rotate(-28 188 136)" fill="#ffffff" fill-opacity="0.22"/>
+  <circle cx="256" cy="264" r="112" fill="url(#portal)" stroke="#1e293b" stroke-width="10"/>
+  <polygon points="256,178 334,314 178,314" fill="url(#die)" stroke="#60a5fa" stroke-width="3" stroke-linejoin="round"/>
+  <text x="256" y="286" text-anchor="middle" fill="#dbeafe" font-family="monospace" font-weight="bold" font-size="28" letter-spacing="2">8</text>
+</svg>

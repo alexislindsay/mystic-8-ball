@@ -1,0 +1,23 @@
+{
+  "name": "mystic-8-ball",
+  "version": "1.0.0",
+  "description": "Mystic 8-Ball — Interactive 3D Liquid Fate & Entropy Simulator for Web & Google Play Store (Capacitor)",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "node scripts/prepare-web.js",
+    "android:init": "npx cap add android",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/haptics": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.0.0"
+  }
+}

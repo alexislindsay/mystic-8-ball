@@ -1,0 +1,17 @@
+{
+  "appId": "com.mystic8ball.oracle",
+  "appName": "Mystic 8-Ball",
+  "webDir": "www",
+  "backgroundColor": "#03050c",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#03050c"
+    }
+  }
+}
