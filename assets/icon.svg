@@ -1,31 +1,165 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#03050c"/>
+    <!-- Cosmic Background -->
+    <radialGradient id="cosmicBg" cx="50%" cy="35%" r="72%">
+      <stop offset="0%" stop-color="#141836"/>
+      <stop offset="55%" stop-color="#070a1c"/>
+      <stop offset="100%" stop-color="#020308"/>
     </radialGradient>
-    <radialGradient id="sphere" cx="32%" cy="26%" r="70%">
-      <stop offset="0%" stop-color="#475569"/>
-      <stop offset="16%" stop-color="#1e293b"/>
-      <stop offset="50%" stop-color="#090d16"/>
-      <stop offset="85%" stop-color="#020408"/>
-      <stop offset="100%" stop-color="#1e293b"/>
+
+    <!-- Black Galaxy / Nebula Sphere Gradient -->
+    <radialGradient id="nebulaSphere" cx="35%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="22%" stop-color="#1e1b4b"/>
+      <stop offset="48%" stop-color="#090a19"/>
+      <stop offset="78%" stop-color="#020308"/>
+      <stop offset="94%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
     </radialGradient>
-    <radialGradient id="portal" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0a193d"/>
-      <stop offset="70%" stop-color="#040b21"/>
-      <stop offset="100%" stop-color="#000000"/>
+
+    <!-- Nebula Swirl Overlay inside Sphere -->
+    <radialGradient id="nebulaMist" cx="68%" cy="72%" r="55%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.38"/>
+      <stop offset="45%" stop-color="#3b82f6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="die" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="55%" stop-color="#1d4ed8"/>
-      <stop offset="100%" stop-color="#172554"/>
+
+    <!-- Butterfly Wing Gradient (Upper Forewing) -->
+    <linearGradient id="wingUpper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="28%" stop-color="#38bdf8"/>
+      <stop offset="65%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#311042"/>
     </linearGradient>
+
+    <!-- Butterfly Wing Gradient (Lower Hindwing) -->
+    <linearGradient id="wingLower" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="45%" stop-color="#7c3aed"/>
+      <stop offset="85%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Deep Liquid Portal -->
+    <radialGradient id="portalDepth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f2557"/>
+      <stop offset="65%" stop-color="#050d26"/>
+      <stop offset="100%" stop-color="#010208"/>
+    </radialGradient>
+
+    <!-- Classic White / Ice-Blue Oracle Triangle -->
+    <linearGradient id="whiteTriangle" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+
+    <!-- Outer Celestial Glow Filter -->
+    <filter id="celestialGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <circle cx="256" cy="256" r="208" fill="url(#sphere)" stroke="#1e293b" stroke-width="4"/>
-  <ellipse cx="188" cy="136" rx="64" ry="34" transform="rotate(-28 188 136)" fill="#ffffff" fill-opacity="0.22"/>
-  <circle cx="256" cy="264" r="112" fill="url(#portal)" stroke="#1e293b" stroke-width="10"/>
-  <polygon points="256,178 334,314 178,314" fill="url(#die)" stroke="#60a5fa" stroke-width="3" stroke-linejoin="round"/>
-  <text x="256" y="286" text-anchor="middle" fill="#dbeafe" font-family="monospace" font-weight="bold" font-size="28" letter-spacing="2">8</text>
+
+  <!-- Rounded App Icon Base -->
+  <rect width="512" height="512" rx="115" fill="url(#cosmicBg)"/>
+
+  <!-- Ambient Starfield Dust -->
+  <g fill="#e2e8f0" opacity="0.75">
+    <circle cx="74" cy="92" r="1.8"/>
+    <circle cx="438" cy="84" r="2.2"/>
+    <circle cx="120" cy="64" r="1.2"/>
+    <circle cx="392" cy="122" r="1.4"/>
+    <circle cx="62" cy="396" r="1.6"/>
+    <circle cx="448" cy="408" r="2"/>
+    <circle cx="256" cy="52" r="1.5"/>
+    <circle cx="256" cy="462" r="1.5"/>
+  </g>
+
+  <!-- ================= LEFT SIDE-PROFILE BUTTERFLY WING ================= -->
+  <g filter="url(#celestialGlow)" opacity="0.95">
+    <!-- Left Upper Forewing (Side Profile Arching Outward) -->
+    <path d="M 164 236
+             C 118 148, 46 96, 22 128
+             C 4 152, 24 212, 54 242
+             C 34 252, 26 276, 44 294
+             C 68 316, 122 288, 162 268 Z"
+          fill="url(#wingUpper)" stroke="#bae6fd" stroke-width="2.5"/>
+    <!-- Left Lower Hindwing & Swallowtail Tip -->
+    <path d="M 162 268
+             C 116 292, 54 328, 56 376
+             C 58 408, 86 426, 108 404
+             C 122 390, 124 418, 138 424
+             C 150 404, 158 342, 182 308 Z"
+          fill="url(#wingLower)" stroke="#ddd6fe" stroke-width="2"/>
+    <!-- Left Wing Nebula Veins & Stardust Dots -->
+    <path d="M 152 246 C 108 188, 62 154, 34 142 M 148 258 C 102 228, 66 226, 44 236 M 156 282 C 118 318, 88 352, 74 384"
+          stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="42" cy="148" r="3.5" fill="#ffffff"/>
+    <circle cx="54" cy="176" r="2.2" fill="#e0f2fe"/>
+    <circle cx="52" cy="268" r="2.5" fill="#e0f2fe"/>
+    <circle cx="78" cy="378" r="3" fill="#fbcfe8"/>
+  </g>
+
+  <!-- ================= RIGHT SIDE-PROFILE BUTTERFLY WING ================= -->
+  <g filter="url(#celestialGlow)" opacity="0.95">
+    <!-- Right Upper Forewing -->
+    <path d="M 348 236
+             C 394 148, 466 96, 490 128
+             C 508 152, 488 212, 458 242
+             C 478 252, 486 276, 468 294
+             C 444 316, 390 288, 350 268 Z"
+          fill="url(#wingUpper)" stroke="#bae6fd" stroke-width="2.5"/>
+    <!-- Right Lower Hindwing & Swallowtail Tip -->
+    <path d="M 350 268
+             C 396 292, 458 328, 456 376
+             C 454 408, 426 426, 404 404
+             C 390 390, 388 418, 374 424
+             C 362 404, 354 342, 330 308 Z"
+          fill="url(#wingLower)" stroke="#ddd6fe" stroke-width="2"/>
+    <!-- Right Wing Nebula Veins & Stardust Dots -->
+    <path d="M 360 246 C 404 188, 450 154, 478 142 M 364 258 C 410 228, 446 226, 468 236 M 356 282 C 394 318, 424 352, 438 384"
+          stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="470" cy="148" r="3.5" fill="#ffffff"/>
+    <circle cx="458" cy="176" r="2.2" fill="#e0f2fe"/>
+    <circle cx="460" cy="268" r="2.5" fill="#e0f2fe"/>
+    <circle cx="434" cy="378" r="3" fill="#fbcfe8"/>
+  </g>
+
+  <!-- ================= CENTRAL GALAXY / NEBULA 8-BALL SPHERE ================= -->
+  <circle cx="256" cy="256" r="134" fill="url(#nebulaSphere)" stroke="#60a5fa" stroke-opacity="0.5" stroke-width="3"/>
+  <circle cx="256" cy="256" r="134" fill="url(#nebulaMist)"/>
+
+  <!-- Tiny Galaxy Stars on Sphere Surface -->
+  <g fill="#ffffff" opacity="0.7">
+    <circle cx="176" cy="182" r="1.4"/>
+    <circle cx="328" cy="178" r="1.8"/>
+    <circle cx="164" cy="296" r="1.3"/>
+    <circle cx="338" cy="312" r="1.6"/>
+    <circle cx="212" cy="152" r="1.1"/>
+  </g>
+
+  <!-- Specular Gloss Reflection on Top-Left of Sphere -->
+  <ellipse cx="210" cy="172" rx="46" ry="22" transform="rotate(-26 210 172)" fill="#ffffff" fill-opacity="0.28"/>
+
+  <!-- Recessed Metallic Portal Bezel -->
+  <circle cx="256" cy="260" r="82" fill="url(#portalDepth)" stroke="#1e293b" stroke-width="7"/>
+  <circle cx="256" cy="260" r="82" fill="none" stroke="#60a5fa" stroke-opacity="0.35" stroke-width="1.5"/>
+
+  <!-- Classic Glowing White / Ice-Blue Oracle Triangle Inside Portal -->
+  <polygon points="256,192 318,302 194,302"
+           fill="url(#whiteTriangle)"
+           stroke="#ffffff"
+           stroke-width="2.5"
+           stroke-linejoin="round"
+           filter="url(#celestialGlow)"/>
+
+  <!-- Inner Sacred Geometry Triangle Engraving & Mystic Eye/Dot -->
+  <polygon points="256,210 302,292 210,292"
+           fill="none"
+           stroke="#1e3a8a"
+           stroke-opacity="0.55"
+           stroke-width="1.6"
+           stroke-linejoin="round"/>
+  <circle cx="256" cy="264" r="5" fill="#1e3a8a" opacity="0.75"/>
 </svg>

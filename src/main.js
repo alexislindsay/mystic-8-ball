@@ -136,5 +136,8 @@
         refreshChronicleUI();
         bindEvents();
         ns.mobile.initDeviceShakeListener(() => triggerShake('Unspoken inquiry (Device shake)'));
+        if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
     });
 })(window);

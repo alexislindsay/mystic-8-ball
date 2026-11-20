@@ -25,7 +25,7 @@ function copyRecursive(src, dest) {
 fs.rmSync(OUT_DIR, { recursive: true, force: true });
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
-for (const item of ['index.html', 'manifest.json', 'src', 'assets']) {
+for (const item of ['index.html', 'privacy.html', 'manifest.json', 'sw.js', 'src', 'assets']) {
     const srcPath = path.join(ROOT_DIR, item);
     if (fs.existsSync(srcPath)) {
         copyRecursive(srcPath, path.join(OUT_DIR, item));

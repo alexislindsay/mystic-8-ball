@@ -1,0 +1,68 @@
+name: Build Android APK & Play Store AAB
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up JDK 21 for Capacitor Android
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Install dependencies & prepare web assets
+        run: |
+          npm install
+          npm run build
+
+      - name: Add & Sync Capacitor Android platform
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
+
+      - name: Build Debug APK & Release Play Store AAB
+        working-directory: ./android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug bundleRelease
+
+      - name: Sign Release AAB for Play Store upload
+        working-directory: ./android
+        run: |
+          keytool -genkeypair -v \
+            -keystore release-upload.jks \
+            -alias upload \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass mystic8ball -keypass mystic8ball \
+            -dname "CN=Alexis Lindsay, O=Mystic 8-Ball, C=US"
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore release-upload.jks \
+            -storepass mystic8ball -keypass mystic8ball \
+            app/build/outputs/bundle/release/app-release.aab upload
+
+      - name: Upload Installable Android APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mystic-8-ball-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload Signed Google Play Store AAB Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mystic-8-ball-play-store-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
