@@ -40,6 +40,7 @@
         const recordedQuestion = rawQuestion.length > 0 ? rawQuestion : sourceLabel;
 
         ns.sphereView.startSphereShakeAnimation();
+        ns.butterflies?.flutterOnShake();
         ns.audio.playShakeSound();
         ns.mobile.triggerShakeHaptics();
 
@@ -135,6 +136,7 @@
         ns.store.initStore();
         refreshChronicleUI();
         bindEvents();
+        ns.butterflies?.initButterflyCompanions();
         ns.mobile.initDeviceShakeListener(() => triggerShake('Unspoken inquiry (Device shake)'));
         if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
             navigator.serviceWorker.register('./sw.js').catch(() => {});

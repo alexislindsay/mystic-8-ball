@@ -1,40 +1,51 @@
-/* Mystic 8-Ball — Realistic 3D Sphere, Liquid Portal & Keyframe Animations */
+/* Mystic 8-Ball — Cosmic Navy-Purple Galaxy Background & 3D Nebula Sphere */
 
 :root {
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Navy-Purple Galaxy Hue Gradient with Distant Sun Shining Out of the Top-Left Corner */
 body {
-    background-color: #03050c;
+    background-color: #120d31;
     background-image:
-        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 55%),
-        radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+        /* Distant sun core & golden-rose solar corona shining out of top-left corner */
+        radial-gradient(circle at 6% 4%, rgba(254, 240, 138, 0.52) 0%, rgba(244, 114, 182, 0.38) 18%, rgba(168, 85, 247, 0.26) 42%, transparent 68%),
+        /* Secondary warm nebula bloom across upper horizon */
+        radial-gradient(ellipse at 32% 0%, rgba(236, 72, 153, 0.24) 0%, rgba(139, 92, 246, 0.18) 45%, transparent 72%),
+        /* Deep cosmic cyan-indigo galaxy glow in lower right */
+        radial-gradient(circle at 88% 82%, rgba(56, 189, 248, 0.2) 0%, rgba(99, 102, 241, 0.16) 42%, transparent 70%),
+        /* Rich navy-purple galaxy base gradient */
+        linear-gradient(155deg, #2d1654 0%, #1d1548 34%, #11133a 68%, #090b24 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
     padding-top: var(--safe-top);
     padding-bottom: var(--safe-bottom);
     touch-action: manipulation;
 }
 
-/* Realistic 3D Black Billiard Sphere */
+/* Realistic 3D Galaxy/Nebula 8-Ball Sphere (Matching the Luminous Butterfly Icon) */
 .eight-ball-sphere {
     position: relative;
     border-radius: 50%;
-    background: radial-gradient(
-        circle at 32% 26%,
-        #475569 0%,
-        #1e293b 14%,
-        #090d16 42%,
-        #020408 78%,
-        #0f172a 96%,
-        #1e293b 100%
-    );
+    background:
+        /* Subtle internal purple & cyan nebula clouds on the obsidian sphere */
+        radial-gradient(circle at 18% 72%, rgba(168, 85, 247, 0.34) 0%, transparent 45%),
+        radial-gradient(circle at 84% 58%, rgba(139, 92, 246, 0.32) 0%, transparent 46%),
+        radial-gradient(circle at 32% 24%,
+            #64748b 0%,
+            #2e1f5e 16%,
+            #110e2e 42%,
+            #050614 76%,
+            #1e1b4b 93%,
+            #38bdf8 100%
+        );
     box-shadow:
-        0 35px 70px -15px rgba(0, 0, 0, 0.95),
-        0 0 50px -10px rgba(37, 99, 235, 0.2),
-        inset -18px -24px 45px rgba(0, 0, 0, 0.95),
-        inset 10px 14px 32px rgba(255, 255, 255, 0.14),
-        inset 0 -8px 25px rgba(59, 130, 246, 0.18);
+        0 35px 75px -12px rgba(5, 4, 20, 0.92),
+        0 0 60px -8px rgba(139, 92, 246, 0.38),
+        inset -16px -22px 45px rgba(2, 3, 12, 0.95),
+        inset 10px 14px 34px rgba(255, 255, 255, 0.22),
+        inset 0 -8px 28px rgba(56, 189, 248, 0.28);
     transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -42,28 +53,28 @@ body {
 
 .eight-ball-sphere:hover {
     box-shadow:
-        0 40px 80px -12px rgba(0, 0, 0, 0.98),
-        0 0 65px -5px rgba(59, 130, 246, 0.32),
-        inset -18px -24px 45px rgba(0, 0, 0, 0.95),
-        inset 12px 16px 36px rgba(255, 255, 255, 0.18),
-        inset 0 -10px 30px rgba(59, 130, 246, 0.25);
+        0 40px 85px -10px rgba(5, 4, 20, 0.96),
+        0 0 75px -4px rgba(103, 232, 249, 0.44),
+        inset -16px -22px 45px rgba(2, 3, 12, 0.95),
+        inset 12px 16px 38px rgba(255, 255, 255, 0.28),
+        inset 0 -10px 32px rgba(168, 85, 247, 0.35);
 }
 
 /* Specular gloss reflection on top left of ball */
 .sphere-gloss {
     position: absolute;
-    top: 9%;
-    left: 17%;
-    width: 34%;
+    top: 7%;
+    left: 15%;
+    width: 38%;
     height: 20%;
     border-radius: 50%;
     background: radial-gradient(
         ellipse at center,
-        rgba(255, 255, 255, 0.45) 0%,
-        rgba(255, 255, 255, 0.12) 55%,
+        rgba(255, 255, 255, 0.48) 0%,
+        rgba(255, 255, 255, 0.14) 55%,
         rgba(255, 255, 255, 0) 80%
     );
-    transform: rotate(-28deg);
+    transform: rotate(-26deg);
     pointer-events: none;
     filter: blur(1px);
     z-index: 20;
@@ -73,13 +84,13 @@ body {
     position: absolute;
     bottom: 8%;
     right: 14%;
-    width: 45%;
-    height: 12%;
+    width: 46%;
+    height: 14%;
     border-radius: 50%;
     background: radial-gradient(
         ellipse at center,
-        rgba(59, 130, 246, 0.22) 0%,
-        rgba(59, 130, 246, 0) 75%
+        rgba(168, 85, 247, 0.32) 0%,
+        rgba(56, 189, 248, 0) 75%
     );
     transform: rotate(-25deg);
     pointer-events: none;
@@ -87,25 +98,26 @@ body {
     z-index: 20;
 }
 
-/* Recessed Bezel Rim */
+/* Recessed Bezel Rim (Expanded to match the icon's prominent portal window) */
 .window-bezel {
     border-radius: 50%;
-    background: linear-gradient(145deg, #05070e, #182032);
+    background: linear-gradient(145deg, #050814, #1e293b, #090d1f);
+    border: 1.5px solid rgba(148, 163, 184, 0.28);
     box-shadow:
         inset 0 6px 14px rgba(0, 0, 0, 0.95),
-        inset 0 -3px 8px rgba(255, 255, 255, 0.09),
-        0 2px 6px rgba(255, 255, 255, 0.06);
+        inset 0 -3px 8px rgba(255, 255, 255, 0.12),
+        0 0 25px rgba(56, 189, 248, 0.22);
 }
 
-/* Deep Dark-Blue Liquid Portal */
+/* Deep Dark-Blue Nebula Liquid Portal */
 .liquid-window {
     position: relative;
     border-radius: 50%;
     background: radial-gradient(
         circle at 50% 50%,
-        #0a193d 0%,
-        #040b21 55%,
-        #01030a 92%,
+        #0f2859 0%,
+        #071333 58%,
+        #020614 92%,
         #000000 100%
     );
     box-shadow:
@@ -119,15 +131,10 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.16) 0%,
-        rgba(255, 255, 255, 0.03) 35%,
-        transparent 50%,
-        rgba(37, 99, 235, 0.06) 85%,
-        rgba(59, 130, 246, 0.14) 100%
-    );
-    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2);
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.03) 42%, transparent 60%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, transparent 50%, rgba(56, 189, 248, 0.16) 100%);
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.24);
     pointer-events: none;
     z-index: 15;
 }
@@ -137,10 +144,10 @@ body {
     position: absolute;
     inset: -40%;
     background:
-        radial-gradient(circle at 30% 40%, rgba(29, 78, 216, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 70% 60%, rgba(67, 56, 202, 0.2) 0%, transparent 50%),
-        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(37, 99, 235, 0.12) 90deg, transparent 180deg, rgba(59, 130, 246, 0.12) 270deg, transparent 360deg);
-    opacity: 0.7;
+        radial-gradient(circle at 30% 40%, rgba(56, 189, 248, 0.26) 0%, transparent 45%),
+        radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.24) 0%, transparent 50%),
+        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(37, 99, 235, 0.14) 90deg, transparent 180deg, rgba(56, 189, 248, 0.14) 270deg, transparent 360deg);
+    opacity: 0.8;
     pointer-events: none;
     animation: slowSpin 24s linear infinite;
     z-index: 2;
@@ -156,18 +163,13 @@ body {
     50% { transform: rotate(180deg) scale(1.08); }
     100% { transform: rotate(360deg) scale(1); }
 }
-
 @keyframes fastSwirl {
     0% { transform: rotate(0deg) scale(1.2); }
     100% { transform: rotate(360deg) scale(1.2); }
 }
-
 /* Floating Die Container */
 .die-wrapper {
-    transition:
-        transform 1.15s cubic-bezier(0.19, 1, 0.22, 1),
-        filter 1.15s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0.9s ease-out;
+    transition: transform 1.15s cubic-bezier(0.19, 1, 0.22, 1), filter 1.15s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.9s ease-out;
     will-change: transform, filter, opacity;
     z-index: 8;
 }
@@ -229,20 +231,18 @@ body {
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #dbeafe;
+    color: #f0f9ff;
     text-shadow:
-        0 0 8px rgba(96, 165, 250, 0.9),
-        0 0 16px rgba(59, 130, 246, 0.65),
+        0 0 8px rgba(103, 232, 249, 0.95),
+        0 0 16px rgba(59, 130, 246, 0.75),
         0 1px 2px rgba(0, 0, 0, 0.95);
 }
 
-/* Custom Scrollbar for History Log */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.4); border-radius: 9999px; }
-::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.35); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.45); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.7); }
 
-/* Respect Reduced Motion Accessibility Preference */
 @media (prefers-reduced-motion: reduce) {
     .liquid-swirl, .die-surfaced { animation: none; }
     .shaking { animation-duration: 0.25s; }

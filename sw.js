@@ -3,7 +3,7 @@
  * @description Offline-first Service Worker for Mystic 8-Ball PWA & Capacitor Android deployment.
  */
 
-const CACHE_NAME = 'mystic-8ball-v1';
+const CACHE_NAME = 'mystic-8ball-v2';
 const PRECACHE_ASSETS = [
     './',
     './index.html',
@@ -11,7 +11,11 @@ const PRECACHE_ASSETS = [
     './manifest.json',
     './assets/icon.svg',
     './assets/glyph-emblem.png',
+    './assets/glyph-gate-icon.png',
+    './assets/butterfly-left.png',
+    './assets/butterfly-right.png',
     './src/styles/sphere.css',
+    './src/styles/butterflies.css',
     './src/data/oracle-answers.js',
     './src/services/audio-service.js',
     './src/services/storage-service.js',
@@ -19,6 +23,7 @@ const PRECACHE_ASSETS = [
     './src/state/oracle-store.js',
     './src/ui/sphere-view.js',
     './src/ui/chronicle-view.js',
+    './src/ui/butterfly-flight.js',
     './src/main.js'
 ];
 
