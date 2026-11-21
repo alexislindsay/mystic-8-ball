@@ -10,6 +10,7 @@ const PRECACHE_ASSETS = [
     './privacy.html',
     './manifest.json',
     './assets/icon.svg',
+    './assets/glyph-emblem.png',
     './src/styles/sphere.css',
     './src/data/oracle-answers.js',
     './src/services/audio-service.js',

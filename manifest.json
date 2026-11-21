@@ -15,10 +15,10 @@
       "purpose": "any maskable"
     },
     {
-      "src": "./assets/glyph-emblem.jpg",
+      "src": "./assets/glyph-emblem.png",
       "sizes": "1024x1024",
-      "type": "image/jpeg",
-      "purpose": "any"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

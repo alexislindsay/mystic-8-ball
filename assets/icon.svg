@@ -1,165 +1,190 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <!-- Cosmic Background -->
-    <radialGradient id="cosmicBg" cx="50%" cy="35%" r="72%">
-      <stop offset="0%" stop-color="#141836"/>
-      <stop offset="55%" stop-color="#070a1c"/>
-      <stop offset="100%" stop-color="#020308"/>
-    </radialGradient>
+    <!-- Pure Circular Clip so NOTHING exists outside the 8-Ball -->
+    <clipPath id="sphereClip">
+      <circle cx="256" cy="256" r="244"/>
+    </clipPath>
 
-    <!-- Black Galaxy / Nebula Sphere Gradient -->
-    <radialGradient id="nebulaSphere" cx="35%" cy="28%" r="72%">
-      <stop offset="0%" stop-color="#4c1d95"/>
-      <stop offset="22%" stop-color="#1e1b4b"/>
-      <stop offset="48%" stop-color="#090a19"/>
-      <stop offset="78%" stop-color="#020308"/>
-      <stop offset="94%" stop-color="#1e3a8a"/>
+    <!-- Black Galaxy / Nebula 8-Ball Outer Sphere Gradient -->
+    <radialGradient id="galaxyBall" cx="34%" cy="26%" r="74%">
+      <stop offset="0%" stop-color="#3b2070"/>
+      <stop offset="18%" stop-color="#17143a"/>
+      <stop offset="46%" stop-color="#070814"/>
+      <stop offset="78%" stop-color="#020307"/>
+      <stop offset="94%" stop-color="#0f1b3d"/>
       <stop offset="100%" stop-color="#38bdf8"/>
     </radialGradient>
 
-    <!-- Nebula Swirl Overlay inside Sphere -->
-    <radialGradient id="nebulaMist" cx="68%" cy="72%" r="55%">
-      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.38"/>
-      <stop offset="45%" stop-color="#3b82f6" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    <!-- Recessed Metallic 8-Ball Window Bezel Gradient -->
+    <linearGradient id="windowBezel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="45%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Deep Dark-Blue / Nebula Liquid Portal Window -->
+    <radialGradient id="portalLiquid" cx="50%" cy="50%" r="52%">
+      <stop offset="0%" stop-color="#102454"/>
+      <stop offset="58%" stop-color="#070f2b"/>
+      <stop offset="100%" stop-color="#01030a"/>
     </radialGradient>
 
-    <!-- Butterfly Wing Gradient (Upper Forewing) -->
-    <linearGradient id="wingUpper" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e0f2fe"/>
-      <stop offset="28%" stop-color="#38bdf8"/>
-      <stop offset="65%" stop-color="#8b5cf6"/>
-      <stop offset="100%" stop-color="#311042"/>
+    <!-- Curved Glass Lens Reflection Over the 8-Ball Window -->
+    <linearGradient id="windowGlass" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.14"/>
     </linearGradient>
 
-    <!-- Butterfly Wing Gradient (Lower Hindwing) -->
-    <linearGradient id="wingLower" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f472b6"/>
-      <stop offset="45%" stop-color="#7c3aed"/>
-      <stop offset="85%" stop-color="#2563eb"/>
-      <stop offset="100%" stop-color="#0f172a"/>
+    <!-- Realistic Side-Profile Upper Forewing Gradient -->
+    <linearGradient id="wingFore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.96"/>
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="72%" stop-color="#8b5cf6" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#3b0764" stop-opacity="0.94"/>
     </linearGradient>
 
-    <!-- Deep Liquid Portal -->
-    <radialGradient id="portalDepth" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0f2557"/>
-      <stop offset="65%" stop-color="#050d26"/>
-      <stop offset="100%" stop-color="#010208"/>
-    </radialGradient>
-
-    <!-- Classic White / Ice-Blue Oracle Triangle -->
-    <linearGradient id="whiteTriangle" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="60%" stop-color="#e0f2fe"/>
-      <stop offset="100%" stop-color="#93c5fd"/>
+    <!-- Realistic Elongated Lower Hindwing Gradient -->
+    <linearGradient id="wingHind" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.92"/>
+      <stop offset="48%" stop-color="#8b5cf6" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0.94"/>
     </linearGradient>
 
-    <!-- Outer Celestial Glow Filter -->
-    <filter id="celestialGlow" x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    <!-- Bioluminescent Neon Glow Filter -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="9" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
 
-  <!-- Rounded App Icon Base -->
-  <rect width="512" height="512" rx="115" fill="url(#cosmicBg)"/>
+  <g clip-path="url(#sphereClip)">
+    <!-- 1. Outer 3D Black Galaxy / Nebula 8-Ball Sphere -->
+    <circle cx="256" cy="256" r="244" fill="url(#galaxyBall)"/>
 
-  <!-- Ambient Starfield Dust -->
-  <g fill="#e2e8f0" opacity="0.75">
-    <circle cx="74" cy="92" r="1.8"/>
-    <circle cx="438" cy="84" r="2.2"/>
-    <circle cx="120" cy="64" r="1.2"/>
-    <circle cx="392" cy="122" r="1.4"/>
-    <circle cx="62" cy="396" r="1.6"/>
-    <circle cx="448" cy="408" r="2"/>
-    <circle cx="256" cy="52" r="1.5"/>
-    <circle cx="256" cy="462" r="1.5"/>
+    <!-- Subtle Galaxy Stars on Outer Sphere -->
+    <g fill="#ffffff" opacity="0.7">
+      <circle cx="72" cy="148" r="1.4"/><circle cx="436" cy="152" r="1.6"/>
+      <circle cx="118" cy="72" r="1.2"/><circle cx="388" cy="78" r="1.4"/>
+      <circle cx="64" cy="312" r="1.5"/><circle cx="442" cy="306" r="1.5"/>
+      <circle cx="132" cy="436" r="1.6"/><circle cx="378" cy="432" r="1.4"/>
+    </g>
+
+    <!-- Outer Sphere Top-Left Specular Gloss Highlight -->
+    <ellipse cx="168" cy="96" rx="88" ry="34" transform="rotate(-26 168 96)" fill="#ffffff" fill-opacity="0.22"/>
+
+    <!-- 2. Classic Recessed 8-Ball Window Bezel & Liquid Portal -->
+    <circle cx="256" cy="260" r="186" fill="url(#windowBezel)" stroke="#475569" stroke-opacity="0.6" stroke-width="3"/>
+    <circle cx="256" cy="260" r="172" fill="url(#portalLiquid)" stroke="#1e293b" stroke-width="4"/>
+    <circle cx="256" cy="260" r="172" fill="none" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5"/>
+
+    <!-- ================= LEFT BUTTERFLY (SPANNING FULL TRIANGLE SIDE + LONGER LOWER WING) ================= -->
+    <!-- Triangle left wall runs from apex (256,162) to bottom-left corner (156,342) -->
+    <g filter="url(#neonGlow)">
+      <!-- Left Butterfly Body & Legs Spanning Most of the Left Triangle Side -->
+      <path d="M 240 184 C 220 220, 194 266, 170 312" stroke="#e0f2fe" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+      <circle cx="243" cy="178" r="4.5" fill="#e0f2fe"/>
+      <!-- Antennae near peak -->
+      <path d="M 244 174 C 242 154, 232 142, 220 138 M 245 175 C 247 156, 240 144, 230 138" stroke="#67e8f9" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Legs gripping the pyramid wall -->
+      <path d="M 232 198 L 240 206 M 216 228 L 224 236 M 198 260 L 206 268 M 182 290 L 190 298" stroke="#bae6fd" stroke-width="1.6" stroke-linecap="round"/>
+
+      <!-- Left Elongated Lower Hindwing (extending much longer down past the bottom-left corner of triangle) -->
+      <path d="M 206 244
+               C 156 238, 106 248, 96 286
+               C 88 316, 104 348, 122 368
+               C 134 382, 148 378, 152 358
+               C 156 342, 162 328, 170 314 Z"
+            fill="url(#wingHind)" fill-opacity="0.48" stroke="#f472b6" stroke-width="2.4" stroke-linejoin="round"/>
+
+      <!-- Left Upper Forewing (sweeping HIGH and UPWARD in realistic resting profile) -->
+      <path d="M 238 186
+               C 208 122, 152 88, 114 104
+               C 92 114, 86 150, 96 184
+               C 106 218, 154 242, 212 248 Z"
+            fill="url(#wingFore)" fill-opacity="0.5" stroke="#67e8f9" stroke-width="2.6" stroke-linejoin="round"/>
+
+      <!-- Realistic Anatomical Wing Cells & Glowing Filigree Veins (Left Upper & Elongated Lower) -->
+      <path d="M 232 194 C 192 146, 152 122, 102 124
+               M 192 152 C 164 126, 138 110, 118 104
+               M 182 168 C 148 156, 116 148, 92 148
+               M 202 204 C 160 194, 122 188, 96 184
+               M 208 228 C 164 218, 126 216, 104 218
+               M 198 258 C 156 256, 120 266, 98 286
+               M 188 278 C 152 286, 122 306, 108 334
+               M 178 298 C 154 316, 138 342, 136 372"
+            fill="none" stroke="#e0f2fe" stroke-width="1.6" stroke-opacity="0.92" stroke-linecap="round"/>
+
+      <!-- Glowing Stardust Spots Along Upper & Elongated Lower Wing Margins (Left) -->
+      <circle cx="114" cy="116" r="3.4" fill="#ffffff"/><circle cx="102" cy="138" r="3" fill="#67e8f9"/>
+      <circle cx="100" cy="162" r="2.8" fill="#e0f2fe"/><circle cx="106" cy="188" r="2.6" fill="#f0abfc"/>
+      <circle cx="108" cy="274" r="3" fill="#67e8f9"/><circle cx="106" cy="302" r="3.2" fill="#ffffff"/>
+      <circle cx="116" cy="330" r="3" fill="#f472b6"/><circle cx="134" cy="358" r="2.8" fill="#ffffff"/>
+    </g>
+
+    <!-- ================= RIGHT BUTTERFLY (SPANNING FULL TRIANGLE SIDE + LONGER LOWER WING) ================= -->
+    <!-- Triangle right wall runs from apex (256,162) to bottom-right corner (356,342) -->
+    <g filter="url(#neonGlow)">
+      <!-- Right Butterfly Body & Legs Spanning Most of the Right Triangle Side -->
+      <path d="M 272 184 C 292 220, 318 266, 342 312" stroke="#e0f2fe" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+      <circle cx="269" cy="178" r="4.5" fill="#e0f2fe"/>
+      <!-- Antennae near peak -->
+      <path d="M 268 174 C 270 154, 280 142, 292 138 M 267 175 C 265 156, 272 144, 282 138" stroke="#67e8f9" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Legs gripping the pyramid wall -->
+      <path d="M 280 198 L 272 206 M 296 228 L 288 236 M 314 260 L 306 268 M 330 290 L 322 298" stroke="#bae6fd" stroke-width="1.6" stroke-linecap="round"/>
+
+      <!-- Right Elongated Lower Hindwing (extending much longer down past the bottom-right corner of triangle) -->
+      <path d="M 306 244
+               C 356 238, 406 248, 416 286
+               C 424 316, 408 348, 390 368
+               C 378 382, 364 378, 360 358
+               C 356 342, 350 328, 342 314 Z"
+            fill="url(#wingHind)" fill-opacity="0.48" stroke="#f472b6" stroke-width="2.4" stroke-linejoin="round"/>
+
+      <!-- Right Upper Forewing (sweeping HIGH and UPWARD in realistic resting profile) -->
+      <path d="M 274 186
+               C 304 122, 360 88, 398 104
+               C 420 114, 426 150, 416 184
+               C 406 218, 358 242, 300 248 Z"
+            fill="url(#wingFore)" fill-opacity="0.5" stroke="#67e8f9" stroke-width="2.6" stroke-linejoin="round"/>
+
+      <!-- Realistic Anatomical Wing Cells & Glowing Filigree Veins (Right Upper & Elongated Lower) -->
+      <path d="M 280 194 C 320 146, 360 122, 410 124
+               M 320 152 C 348 126, 374 110, 394 104
+               M 330 168 C 364 156, 396 148, 420 148
+               M 310 204 C 352 194, 390 188, 416 184
+               M 304 228 C 348 218, 386 216, 408 218
+               M 314 258 C 356 256, 392 266, 414 286
+               M 324 278 C 360 286, 390 306, 404 334
+               M 334 298 C 358 316, 374 342, 376 372"
+            fill="none" stroke="#e0f2fe" stroke-width="1.6" stroke-opacity="0.92" stroke-linecap="round"/>
+
+      <!-- Glowing Stardust Spots Along Upper & Elongated Lower Wing Margins (Right) -->
+      <circle cx="398" cy="116" r="3.4" fill="#ffffff"/><circle cx="410" cy="138" r="3" fill="#67e8f9"/>
+      <circle cx="412" cy="162" r="2.8" fill="#e0f2fe"/><circle cx="406" cy="188" r="2.6" fill="#f0abfc"/>
+      <circle cx="404" cy="274" r="3" fill="#67e8f9"/><circle cx="406" cy="302" r="3.2" fill="#ffffff"/>
+      <circle cx="396" cy="330" r="3" fill="#f472b6"/><circle cx="378" cy="358" r="2.8" fill="#ffffff"/>
+    </g>
+
+    <!-- 3. Classic Glowing White Pyramid / Triangle Inside the Portal Window -->
+    <polygon points="256,162 356,342 156,342"
+             fill="none"
+             stroke="#ffffff"
+             stroke-width="14"
+             stroke-linejoin="miter"
+             stroke-miterlimit="10"
+             filter="url(#neonGlow)"/>
+
+    <!-- 4. Curved Glass Window Lens Highlight Over the Portal -->
+    <ellipse cx="236" cy="158" rx="94" ry="44" transform="rotate(-18 236 158)" fill="url(#windowGlass)"/>
   </g>
 
-  <!-- ================= LEFT SIDE-PROFILE BUTTERFLY WING ================= -->
-  <g filter="url(#celestialGlow)" opacity="0.95">
-    <!-- Left Upper Forewing (Side Profile Arching Outward) -->
-    <path d="M 164 236
-             C 118 148, 46 96, 22 128
-             C 4 152, 24 212, 54 242
-             C 34 252, 26 276, 44 294
-             C 68 316, 122 288, 162 268 Z"
-          fill="url(#wingUpper)" stroke="#bae6fd" stroke-width="2.5"/>
-    <!-- Left Lower Hindwing & Swallowtail Tip -->
-    <path d="M 162 268
-             C 116 292, 54 328, 56 376
-             C 58 408, 86 426, 108 404
-             C 122 390, 124 418, 138 424
-             C 150 404, 158 342, 182 308 Z"
-          fill="url(#wingLower)" stroke="#ddd6fe" stroke-width="2"/>
-    <!-- Left Wing Nebula Veins & Stardust Dots -->
-    <path d="M 152 246 C 108 188, 62 154, 34 142 M 148 258 C 102 228, 66 226, 44 236 M 156 282 C 118 318, 88 352, 74 384"
-          stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <circle cx="42" cy="148" r="3.5" fill="#ffffff"/>
-    <circle cx="54" cy="176" r="2.2" fill="#e0f2fe"/>
-    <circle cx="52" cy="268" r="2.5" fill="#e0f2fe"/>
-    <circle cx="78" cy="378" r="3" fill="#fbcfe8"/>
-  </g>
-
-  <!-- ================= RIGHT SIDE-PROFILE BUTTERFLY WING ================= -->
-  <g filter="url(#celestialGlow)" opacity="0.95">
-    <!-- Right Upper Forewing -->
-    <path d="M 348 236
-             C 394 148, 466 96, 490 128
-             C 508 152, 488 212, 458 242
-             C 478 252, 486 276, 468 294
-             C 444 316, 390 288, 350 268 Z"
-          fill="url(#wingUpper)" stroke="#bae6fd" stroke-width="2.5"/>
-    <!-- Right Lower Hindwing & Swallowtail Tip -->
-    <path d="M 350 268
-             C 396 292, 458 328, 456 376
-             C 454 408, 426 426, 404 404
-             C 390 390, 388 418, 374 424
-             C 362 404, 354 342, 330 308 Z"
-          fill="url(#wingLower)" stroke="#ddd6fe" stroke-width="2"/>
-    <!-- Right Wing Nebula Veins & Stardust Dots -->
-    <path d="M 360 246 C 404 188, 450 154, 478 142 M 364 258 C 410 228, 446 226, 468 236 M 356 282 C 394 318, 424 352, 438 384"
-          stroke="#ffffff" stroke-opacity="0.45" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <circle cx="470" cy="148" r="3.5" fill="#ffffff"/>
-    <circle cx="458" cy="176" r="2.2" fill="#e0f2fe"/>
-    <circle cx="460" cy="268" r="2.5" fill="#e0f2fe"/>
-    <circle cx="434" cy="378" r="3" fill="#fbcfe8"/>
-  </g>
-
-  <!-- ================= CENTRAL GALAXY / NEBULA 8-BALL SPHERE ================= -->
-  <circle cx="256" cy="256" r="134" fill="url(#nebulaSphere)" stroke="#60a5fa" stroke-opacity="0.5" stroke-width="3"/>
-  <circle cx="256" cy="256" r="134" fill="url(#nebulaMist)"/>
-
-  <!-- Tiny Galaxy Stars on Sphere Surface -->
-  <g fill="#ffffff" opacity="0.7">
-    <circle cx="176" cy="182" r="1.4"/>
-    <circle cx="328" cy="178" r="1.8"/>
-    <circle cx="164" cy="296" r="1.3"/>
-    <circle cx="338" cy="312" r="1.6"/>
-    <circle cx="212" cy="152" r="1.1"/>
-  </g>
-
-  <!-- Specular Gloss Reflection on Top-Left of Sphere -->
-  <ellipse cx="210" cy="172" rx="46" ry="22" transform="rotate(-26 210 172)" fill="#ffffff" fill-opacity="0.28"/>
-
-  <!-- Recessed Metallic Portal Bezel -->
-  <circle cx="256" cy="260" r="82" fill="url(#portalDepth)" stroke="#1e293b" stroke-width="7"/>
-  <circle cx="256" cy="260" r="82" fill="none" stroke="#60a5fa" stroke-opacity="0.35" stroke-width="1.5"/>
-
-  <!-- Classic Glowing White / Ice-Blue Oracle Triangle Inside Portal -->
-  <polygon points="256,192 318,302 194,302"
-           fill="url(#whiteTriangle)"
-           stroke="#ffffff"
-           stroke-width="2.5"
-           stroke-linejoin="round"
-           filter="url(#celestialGlow)"/>
-
-  <!-- Inner Sacred Geometry Triangle Engraving & Mystic Eye/Dot -->
-  <polygon points="256,210 302,292 210,292"
-           fill="none"
-           stroke="#1e3a8a"
-           stroke-opacity="0.55"
-           stroke-width="1.6"
-           stroke-linejoin="round"/>
-  <circle cx="256" cy="264" r="5" fill="#1e3a8a" opacity="0.75"/>
+  <!-- Outer Crisp 8-Ball Sphere Rim -->
+  <circle cx="256" cy="256" r="243" fill="none" stroke="#60a5fa" stroke-opacity="0.38" stroke-width="2"/>
 </svg>
